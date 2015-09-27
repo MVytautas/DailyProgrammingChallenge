@@ -23,6 +23,7 @@ namespace Palindromes
                 Console.WriteLine("It is not polindrome");
             }
             Console.WriteLine("It is  polindrome");
+            Console.ReadLine();
         }
     }
 }
