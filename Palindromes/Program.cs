@@ -6,24 +6,40 @@ using System.Threading.Tasks;
 
 namespace Palindromes
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            string a, b;
+	public class Program
+	{
+		public static void Main(string[] args)
+		{
+			Console.WriteLine("Input polindrome word");
+			string text = Console.ReadLine();
 
-            Console.WriteLine("Input polindrome word");
-            string myString = Console.ReadLine();
-            int length = myString.Length;
+			IsPalindrome(text);
 
-            for (int i = 0; i < length / 2; i++)
-            {
-                if (myString[i] != myString[length - i - 1])
-                     
-                Console.WriteLine("It is not polindrome");
-            }
-            Console.WriteLine("It is  polindrome");
-            Console.ReadLine();
-        }
-    }
+			Console.ReadLine();
+		}
+
+		public static Boolean IsPalindrome(String text)
+		{
+			var alpha = "abcdefghijklmnopqrstuvwxyz";
+			var testText = text.Replace(" ", "").Replace("\r\n", "").Replace("\t", "").ToLower().Where(c => alpha.Contains(c)).ToList(); //  \r\n = new line and \t = tab
+			int length = testText.Count;
+
+			Boolean isPalindrome = true;
+
+			for (int i = 0; i < length / 2; i++)
+			{
+				if (testText[i] != testText[length - i - 1])
+				{
+					Console.WriteLine("It is not polindrome");
+					isPalindrome = false;
+					break;
+				}
+			}
+			if (isPalindrome)
+				Console.WriteLine("It is  polindrome");
+
+			return isPalindrome;
+		}
+
+	}
 }
